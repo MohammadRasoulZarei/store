@@ -63,7 +63,8 @@
   <!-- JavaScript-->
 <script src="{{ asset('/js/admin.js') }}"></script>
 
-@include('sweet::alert')
+@include('sweetalert::alert')
+
 
 @yield('script')
 

@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         }
         auth()->login($user,$remember=true);
-        alert()->success("لاگین با موفقیت انجام شد.", 'باتشکر')->persistent('باشه');
+        alert()->success("لاگین با موفقیت انجام شد.", 'باتشکر')->showConfirmButton('باشه');
         return redirect()->route('home.index');
 
 
@@ -114,5 +114,5 @@ class AuthController extends Controller
 
 
     }
-   
+
 }

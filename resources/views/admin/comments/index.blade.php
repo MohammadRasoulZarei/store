@@ -51,7 +51,7 @@
                                     {{ $comment->text }}
                                 </th>
                                 <th>
-                                    {{ $comment->created_at }}
+                                    {{ verta($comment->created_at) }}
                                 </th>
                                 <th>
                                     <span

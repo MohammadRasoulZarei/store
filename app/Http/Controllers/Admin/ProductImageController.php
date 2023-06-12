@@ -100,7 +100,7 @@ class ProductImageController extends Controller
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->persistent('حله');
+            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->showConfirmButton('حله');
             return redirect()->back();
         }
 

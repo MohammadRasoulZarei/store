@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class Payment
 {
-    public function createOrder($token, $amounts, $address_id, $gateway)
+    public static function createOrder($token, $amounts, $address_id, $gateway)
     {
         try {
             DB::beginTransaction();
@@ -54,7 +54,7 @@ class Payment
         }
     }
 
-    public function successUpdate($token, $refId)
+    public static function successUpdate($token, $refId)
     {
         try {
             DB::beginTransaction();

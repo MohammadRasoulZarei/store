@@ -63,17 +63,15 @@ class PaymentController extends Controller
             $result = Zarinpal::send($checkCoupon, $req->address_id);
             if (isset($reuslt['error'])) {
 
-                alert()->warning('شکست', 'خطا هنگام ارسال به درگاه پرداخت')->persistent('okey');
+                alert()->warning('شکست', 'خطا هنگام ارسال به درگاه پرداخت')->showConfirmButton('حله');
                 return redirect()->back();
             }
             return redirect($result);
         }
         if ($req->payment_method == 'pay') {
-            alert()->warning(
-                "با ارزش پوزش این درگاه پرداخت غیرفعال است لطفا با درگاه دیگر اقدام کنید!",
-                'ناموفق'
-            )->persistent('بسیار خب');
-            return redirect()->back();
+             alert()->error('ناموفق',"با ارزش پوزش این درگاه پرداخت غیرفعال است لطفا با درگاه دیگر اقدام کنید!")->showConfirmButton('بسیار خب');
+
+          return redirect()->back();
         }
     }
 
@@ -83,11 +81,11 @@ class PaymentController extends Controller
 
             $result = Zarinpal::verify($_GET['Authority']);
             if (isset($result['error'])) {
-                //alert()->error('شکست', 'عملیات پرداخت ناموفق بود')->persistent('بسیار خب');
-                alert()->error($result['error'], 'شکست')->persistent('بسیار خب');
+                //alert()->error('شکست', 'عملیات پرداخت ناموفق بود')->showConfirmButton('بسیار خب');
+                alert()->error($result['error'], 'شکست')->showConfirmButton('بسیار خب');
                 return redirect()->back();
             }
-            alert()->success('عملیات موفق', "محصولات خریداری شدن")->persistent('بسیار خب');
+            alert()->success('عملیات موفق', "محصولات خریداری شدن")->showConfirmButton('بسیار خب');
             return redirect()->route('home.index');
         }else {
             dd('wrong-callback');

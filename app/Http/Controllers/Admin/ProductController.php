@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        
+
         $brands = Brand::all();
         $tags = Tag::all();
         $categories = Category::where('parent_id', '!=', 0)->get();
@@ -109,7 +109,7 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->persistent('حله');
+            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->showConfirmButton('حله');
             return redirect()->back();
         }
 
@@ -198,7 +198,7 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            alert()->error('مشکل در ویرایش محصول', $ex->getMessage())->persistent('حله');
+            alert()->error('مشکل در ویرایش محصول', $ex->getMessage())->showConfirmButton('حله');
             return redirect()->back();
         }
 
@@ -252,7 +252,7 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->persistent('حله');
+            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->showConfirmButton('حله');
             return redirect()->back();
         }
 

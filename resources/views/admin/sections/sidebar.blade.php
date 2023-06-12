@@ -53,7 +53,7 @@
             <span> برند ها </span>
         </a>
     </li>
-    @role('product-admin')
+   
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true"
@@ -71,7 +71,7 @@
             </div>
         </div>
     </li>
-    @endrole
+
     <hr class="sidebar-divider">
 
     <!-- Heading -->

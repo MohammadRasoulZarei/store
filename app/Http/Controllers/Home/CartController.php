@@ -28,7 +28,7 @@ class CartController extends Controller
         if (auth()->check()) {
             $result = checkCouponHelper($req->code);
             if (array_key_exists('error', $result)) {
-                alert()->error($result['error'], 'خطا');
+                alert()->error( 'خطا' ,$result['error']  )->showConfirmButton('حله');
 
                 return redirect()->back();
             } else {

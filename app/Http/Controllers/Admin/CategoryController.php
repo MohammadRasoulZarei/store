@@ -76,7 +76,7 @@ class CategoryController extends Controller
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            alert()->error('مشکل در ایجاد دسته بندی', $ex->getMessage())->persistent('حله');
+            alert()->error('مشکل در ایجاد دسته بندی', $ex->getMessage())->showConfirmButton('حله');
             return redirect()->back();
         }
 
@@ -153,7 +153,7 @@ class CategoryController extends Controller
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            alert()->error('مشکل در ویرایش دسته بندی', $ex->getMessage())->persistent('حله');
+            alert()->error('مشکل در ویرایش دسته بندی', $ex->getMessage())->showConfirmButton('حله');
             return redirect()->back();
         }
 

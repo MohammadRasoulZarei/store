@@ -41,6 +41,7 @@ class Zarinpal extends payment{
             echo "cURL Error #:" . $err;
         } else {
             if ($result["Status"] == 100) {
+
                 $createOrder = parent::createOrder($result["Authority"], $amounts, $addressId, 'zarinpal');
                 if (isset($createOrder['error'])) {
                     return $createOrder;
@@ -84,7 +85,7 @@ class Zarinpal extends payment{
             return ['error' => 'عملیات پرداخت با شکست انجام شد'. 'شماره خطا=' . $err] ;
         } else {
             if ($result['Status'] == 100) {
-                $successUpdate = parent::successUpdate($Authority, $result['RefID']);
+                $successUpdate =parent::successUpdate($Authority, $result['RefID']);
                 if (isset($successUpdate['error'])) {
 
 

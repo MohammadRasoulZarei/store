@@ -43,7 +43,8 @@
     <script src="{{ asset('/js/home.js') }}"></script>
     <script src="{{ asset('/js/home/rating.js') }}"></script>
 
-    @include('sweet::alert')
+  @include('sweetalert::alert')
+
 
     {!!  GoogleReCaptchaV3::init() !!}
     @yield('script')

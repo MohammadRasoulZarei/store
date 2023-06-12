@@ -19,7 +19,7 @@ class HomeController extends Controller
 {
     public function sitemap()
     {
-        
+
     }
     public function contactUs(Request $req)
     {
@@ -73,8 +73,13 @@ class HomeController extends Controller
         $sliders=Banner::where('type','slider')->where('is_active',1)->orderBy('priority')->get();
         $banners=Banner::where('is_active',1)->orderBy('priority')->get();
       $products=Product::get();
-    //   $product=Product::find(1);
-    //   dd($product->sale_price);
+        //   $product=Product::find(1);
+        //   dd($product->sale_price);
+        // example:
+        alert()->success('با تشکر', 'عملیات خواسته شده با موفقیت انجام شد!')->showConfirmButton('حله', '#3085d6');
+
+
+
       return view('home.index',compact('sliders','banners','products'));
     }
 
