@@ -151,6 +151,7 @@
                             <div class="setting-content">
                                 <ul class="text-right">
                                     @auth
+                                    <li >{{auth()->user()->name}}</li>
                                     <li><a href="{{route('user.profile.index')}}">پروفایل</a></li>
                                     @else
                                     <li><a href="{{route('login')}}">ورود</a></li>

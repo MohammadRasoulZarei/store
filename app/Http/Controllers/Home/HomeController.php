@@ -76,7 +76,7 @@ class HomeController extends Controller
         //   $product=Product::find(1);
         //   dd($product->sale_price);
         // example:
-        alert()->success('با تشکر', 'عملیات خواسته شده با موفقیت انجام شد!')->showConfirmButton('حله', '#3085d6');
+    
 
 
 

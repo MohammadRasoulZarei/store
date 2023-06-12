@@ -38,11 +38,11 @@ use App\Http\Controllers\Home\CommentsController as homeCommentController;
 |
 */
 
-Route::get('/admin-panel/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/admin-panel/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware(['auth', 'verified']);
 Route::get('/admin', function () {
     return redirect()->route('dashboard');
 });
-Route::prefix('admin-panel/management')->name('admin.')->group(function(){
+Route::prefix('admin-panel/management')->middleware(['auth', 'verified'])->name('admin.')->group(function(){
 
     Route::get('/orders', [AdminController::class, 'orderIndex'])->name('orders');
     Route::get('/orders/{order}', [AdminController::class, 'orderShow'])->name('orders.show');
@@ -102,6 +102,10 @@ Route::prefix('profile')->name('user.')->group(function(){
 
 
 Route::get('/login/{provider}',[AuthController::class,'redirectToProvider'])->name('provider.login');
+Route::get('/logout',function(){
+    auth()->logout();
+    return to_route('home.index');
+});
 Route::get('/login/{provider}/callback',[AuthController::class,'providerCallback']);
 
 Route::get('/about-us',[HomeController::class,'aboutUs']);
@@ -112,6 +116,7 @@ Route::get('/sitemap',[HomeController::class, 'sitemap']);
 Route::any('/phone-login',[AuthController::class,'phoneLogin'])->name('phone.login');
 Route::post('/check-otp',[AuthController::class,'checkOtp']);
 Route::post('/resend-otp',[AuthController::class,'resendOtp']);
+
 //endAthentication
 Route::post('/comments/{product}',[homeCommentController::class,'store'])->name('home.comment.store');
 Route::get('/' , [HomeController::class , 'index'])->name('home.index');
@@ -156,5 +161,5 @@ Route::any('/test',function(){
 //dd(session('coupon'));
 
 
-// auth()->logout();
+
 });

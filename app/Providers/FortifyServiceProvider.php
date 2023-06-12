@@ -31,6 +31,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -50,6 +51,9 @@ class FortifyServiceProvider extends ServiceProvider
         });
         Fortify::registerView(function () {
             return view('auth.register');
+        });
+        Fortify::verifyEmailView(function(){
+            return view ('auth.emailV');
         });
     }
 }

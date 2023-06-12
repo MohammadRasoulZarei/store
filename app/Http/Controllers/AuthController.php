@@ -21,6 +21,7 @@ class AuthController extends Controller
         try {
             $providerUser=Socialite::driver($provider)->user();
         } catch (\Throwable $th) {
+            alert()->warning("هنگام ارتباط خطا رخ داده لطفا دوباره امتحان کنید", 'خطا')->showConfirmButton('باشه');
          return redirect()->route('login');
         }
         //dd()
@@ -35,6 +36,12 @@ class AuthController extends Controller
             'email_verified_at'=>Carbon::now()
            ]);
 
+        }else{
+            $user->update(
+
+                ['email_verified_at' => Carbon::now(),
+                    'avatar' => $providerUser->getAvatar(),]
+            );
         }
         auth()->login($user,$remember=true);
         alert()->success("لاگین با موفقیت انجام شد.", 'باتشکر')->showConfirmButton('باشه');
@@ -43,6 +50,8 @@ class AuthController extends Controller
 
 
     }
+
+
     public function phoneLogin()
     {
       if (request()->method()=='GET') {
