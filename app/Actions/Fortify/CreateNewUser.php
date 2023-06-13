@@ -32,10 +32,12 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+        alert()->success("لینک حاوی تایید ایمیل برای شما ارسال گردیده لطفا ایمیل خد را تایید کنید", 'باتشکر')->showConfirmButton('باشه');
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
     }
 }

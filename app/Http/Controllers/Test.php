@@ -15,7 +15,7 @@ class Test extends Controller
     {
        // Mail::send(new TestMail());
        $user=User::find(2);
-       $user->notify(new PostAdded());
+       $user->notify(new Test());
         return redirect()->route("home.index");
     }
 }
