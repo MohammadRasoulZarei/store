@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Notifications\Test;
 use App\Notifications\OtpSms;
 use Ghasedak\Laravel\GhasedakFacade;
 use Illuminate\Support\Facades\Route;
@@ -108,6 +109,7 @@ Route::get('/logout',function(){
 });
 Route::get('/login/{provider}/callback',[AuthController::class,'providerCallback']);
 
+
 Route::get('/about-us',[HomeController::class,'aboutUs']);
 Route::get('/contact-us',[HomeController::class,'contactUs']);
 Route::post('/contact-us',[HomeController::class,'contactUs']);
@@ -146,14 +148,11 @@ Route::get('/cart-clear' ,function(){
 
 Route::any('/test',function(){
 
-   //session()->pull('compareProduct.2');
- //Cart::clear();
- if (isset($_POST['user'])) {
-
-    auth()->loginUsingId($_POST['user']);
-    return redirect()->back();
- }
- return view('test.user');
+    //session()->pull('compareProduct.2');
+    //Cart::clear();
+    $user = User::find(2);
+    $user->notify(new Test());
+    return redirect()->route("home.index");
 
 //  $cart=\Cart::getContent();
 //  dd($cart);
