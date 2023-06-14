@@ -36,3 +36,6 @@ cursor: initial !important;
 .sweat-contaianer{
     font-size: 1.4em !important;
 }
+.login-register-wrapper  form input{
+    background-color: transparent !important;
+}
